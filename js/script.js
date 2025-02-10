@@ -479,7 +479,7 @@ function convertCumulativeToMonthly(data) {
 }
 
 // --- CARGA DEL CSV CON Papa Parse ---
-Papa.parse("data/data_insurance_2024.csv", {
+Papa.parse("../data/data_insurance_2024.csv", {
   download: true,
   header: true,
   dynamicTyping: true,
