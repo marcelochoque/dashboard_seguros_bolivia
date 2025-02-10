@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Producción y siniestros - Gestión 2024</title>
+  <!-- Bootstrap CSS para estética y responsividad -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+    .chart-container {
+      position: relative;
+      height: 400px;
+    }
+    /* Ajustamos aquí la altura del gráfico de columnas */
+    .bar-chart-container {
+      position: relative;
+      height: 600px; /* Antes 500px, ahora 600px */
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="my-4 text-center">Producción y siniestros - Gestión 2024</h1>
+  
+  <!-- Gráfico de línea: Evolución Temporal por Entidad -->
+  <div class="card">
+    <div class="card-header">
+      Evolución Temporal por Entidad
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="lineAseguradoraSelect" class="form-label">Entidad Aseguradora</label>
+          <select id="lineAseguradoraSelect" class="form-select"></select>
+        </div>
+        <div class="col-md-6">
+          <label for="lineMetricSelect" class="form-label">Métrica</label>
+          <select id="lineMetricSelect" class="form-select"></select>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="lineChartCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Gráfico de columnas (barras): Comparación de Métrica por Entidad en un Mes -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Comparación Entidad en un Mes
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="barMonthSelect" class="form-label">Mes</label>
+              <select id="barMonthSelect" class="form-select"></select>
+            </div>
+            <div class="col-md-6">
+              <label for="barMetricSelect" class="form-label">Métrica</label>
+              <select id="barMetricSelect" class="form-select"></select>
+            </div>
+          </div>
+          <div class="bar-chart-container">
+            <canvas id="barChartCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Gráfico tipo Pie: Distribución de Métrica por Entidad en un Mes -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Distribución Entidad en un Mes
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="pieMonthSelect" class="form-label">Mes</label>
+              <select id="pieMonthSelect" class="form-select"></select>
+            </div>
+            <div class="col-md-6">
+              <label for="pieMetricSelect" class="form-label">Métrica</label>
+              <select id="pieMetricSelect" class="form-select"></select>
+            </div>
+          </div>
+          <div class="chart-container" style="height:500px;">
+            <canvas id="pieChartCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Gráficos de Ratio de Siniestralidad y Tasa de Cesión con nuevos filtros -->
+  <div class="row">
+    <!-- Ratio de Siniestralidad -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Ratio de Siniestralidad por Mes
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="ratioEntidadSelect" class="form-label">Entidad (Ratio)</label>
+              <select id="ratioEntidadSelect" class="form-select"></select>
+            </div>
+            <div class="col-md-6">
+              <label for="ratioMonthSelect" class="form-label">Mes (Ratio)</label>
+              <select id="ratioMonthSelect" class="form-select"></select>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="ratioSiniestralidadChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Tasa de Cesión -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Tasa de Cesión a Reaseguro por Mes
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="tasaEntidadSelect" class="form-label">Entidad (Tasa)</label>
+              <select id="tasaEntidadSelect" class="form-select"></select>
+            </div>
+            <div class="col-md-6">
+              <label for="tasaMonthSelect" class="form-label">Mes (Tasa)</label>
+              <select id="tasaMonthSelect" class="form-select"></select>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="tasaCersionChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- Librerías necesarias -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
